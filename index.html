@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>APP 2019 Dhairyya</title>
+    <style>
+        .container {
+            border: 5px solid #3361AF;
+            margin: auto;
+            width: 28%;
+            margin-top: 10%;
+            position: relative;
+            background-color: #FDECDA;
+            border-radius: 25px;
+        }
+
+        .column1 {
+            float: left;
+            width: 35%;
+            text-align: right;
+        }
+
+        .column2 {
+            float: left;
+            width: 60%;
+            padding-left: 5px;
+        }
+        label{
+            color:#3361AF;
+            font-size: 16px;
+        }
+        .button {
+            border-radius: 2px;
+            background-color: #3361AF;
+            color: white;
+        }
+        p{
+            text-align: center;
+            font-size: 16px;
+        }
+        .button{
+            padding: 6px 14px;
+            display: inline-block;
+            font-size: 16px;
+        }
+        input{
+            border: 1px solid darkgreen;
+            font-size: 16px;
+        }
+        textarea{
+            border: 1px solid darkgreen;
+            font-size: 16px;
+            box-sizing: border-box;
+            resize: none;
+            width:98%;
+            height: 80px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <form autocomplete="on" onsubmit="return validateForm()" method="post">
+        <div class="row" style="padding:7%;">
+            <div class="column1"><label for="firstname" > First name</label></div>
+            <div class="column2"><input id="firstname" type="text" name="firstname" placeholder="First Name" autofocus></div>
+        </div>
+        <div class="row" style="padding: 7%;">
+            <div class="column1"><label for="lastname"> Last name</label></div>
+            <div class="column2"><input id="lastname" type="text" name="lastname" placeholder="Last Name"></div>
+        </div>
+        <div class="row" style="padding: 7%;">
+            <div class="column1"><label for="email">Email Address</label></div>
+            <div class="column2"><input id="email" type="email" name="email" placeholder="Email Address"></div>
+        </div>
+        <div class="row" style="padding: 7%;">
+            <div class="column1"><label for="notes">Notes</label></div>
+            <div class="column2"> <textarea id="notes" name="notes"></textarea></div>
+        </div>
+            <div class="row" style="text-align: center;">
+                <input type="submit" value="Register" class="button">
+            </div>
+    </form>
+    <p id="errorMessage" style="">This is where error or success message will display. </p>
+</div>
+
+
+</body>
+<script>
+    function validateForm() {
+        var firstname = document.getElementById("firstname").value;
+        var lastname=document.getElementById("lastname").value;
+        var email=document.getElementById("email").value;
+        var notes=document.getElementById("notes").value;
+
+        resetFields();
+
+        if(firstname=="") {
+            document.getElementById("errorMessage").innerText = "First Name cannot be empty";
+            document.getElementById("errorMessage").style.color = "#ff0000";
+            return false;
+        }
+
+        if(lastname=="") {
+            document.getElementById("errorMessage").innerText = "Last Name cannot be empty";
+            document.getElementById("errorMessage").style.color = "#ff0000";
+            return false;
+        }
+
+        if(email=="") {
+            document.getElementById("errorMessage").innerText = "Email Address cannot be empty";
+            document.getElementById("errorMessage").style.color = "#ff0000";
+            return false;
+        }
+
+        if(notes=="") {
+            document.getElementById("errorMessage").innerText = "Notes cannot be empty";
+            document.getElementById("errorMessage").style.color = "#ff0000";
+            return false;
+        }
+
+        document.getElementById("errorMessage").innerText = "Validation successful";
+        document.getElementById("errorMessage").style.color = "#00ff00";
+        return false;
+    }
+    function resetFields() {
+        document.getElementById("firstname").value = "";
+        document.getElementById("lastname").value = "";
+        document.getElementById("email").value = "";
+        document.getElementById("notes").value="";
+    }
+</script>
+</html>
